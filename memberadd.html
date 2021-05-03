@@ -1,0 +1,91 @@
+﻿<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+	</head>
+
+	<body	background="질감.png">
+	<center>
+	<form name="frm1">
+	<table	border="3"	width="450">
+	<tr>
+	<td>
+	<center>
+	<text	name="2"	cols="100"	rows="100">
+	<font	size="6">순천향대학교 책나눔 회원가입 페이지입니다.	</font>
+	<br>
+	</font>
+	<table	border="2">
+	<tr>
+	<td>	아이디	</td>
+	<td>
+	
+	<input	type="text" name="id">
+	</input>
+	</td>
+	</tr>
+	<tr>
+	<td>	비밀번호	</td>
+	<td>
+
+	<input	type="password" name="pw" id="pw">
+	</input>
+	</td>
+	<tr>
+	</tr>
+	<td>	비번확인	</td>
+	<td>
+	
+	<input	type="password" id="pw2">
+	</input>
+	</td>
+	</tr>
+	<tr>
+	</tr>
+	<td>	이름	</td>
+	<td>
+
+	<input	type="text" name="name">
+	</input>
+	</td>
+	</tr>
+	
+	</tr>
+
+
+	</table>
+	<br>
+	<p>
+	
+	<input	type="button" onclick="join();" name=""	value="등록하기">
+	<input	type="button" onclick="home();"	name="ㅊ"	value="취소">
+	</form>
+		<script>
+			function home(){
+				location.href='index.html'
+			}
+			
+			function gsubmit(){
+			  var f = document.frm1; 
+			  f.method = "post";
+			  f.action = "join_post.php";
+			  f.submit();
+		   }
+   
+   function join(){   
+      var temp1 = document.getElementById('pw');
+      var temp2 = document.getElementById('pw2');
+
+      
+   
+      if(temp1.value == temp2.value){
+		gsubmit();
+         
+      }else{
+	  alert('비밀번호를 확인해주세요');
+        return false;
+		}
+		}
+		</script>
+	</center>
+	</body>
+</html>

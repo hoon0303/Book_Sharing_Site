@@ -1,0 +1,90 @@
+﻿<?session_start();
+?>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>20164006 박훈 책 나눔 홈페이지 프로젝트</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style type="text/css">
+        OPTION {
+            COLOR: #ffffff;
+            BACKGROUND-COLOR: #999999;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+   
+</head>
+<body background="질감.PNG" >
+    <center>
+        <br>
+    <table border="0" width="85%">
+        <tr>
+             <td colspan="3" ><img src="img/logo.png" width="100%" height="250"/>
+                 
+                 <nav>
+                     <ul>
+                         <li><a href="index.html">메인</a></li>
+                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                         <li><a href="menu2.html">책 나눔</a></li>
+                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                         <li><a href="menu3.html">개발자 소개</a></li>
+                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                         <li><a href="menu4.html">찾아오시는 길</a></li>
+                     </ul>
+                 </nav>
+                
+                 <marquee height="50" width="500"><h2>컴퓨터소프트웨어 공학과의 책 나눔 공간입니다. 방문해 주셔서 감사합니다.</h2></marquee> </td>
+
+        </tr>
+        <tr>
+            <td rowspan="2"><img src="img/computer1.png" width="600" height="360"  /></td>
+            <td width="280" align="center"><a href="menu2.html"><img width="100" height="100" src="book.PNG" width="100%" height="180"/></a>   </td>
+            <td width="280">
+				<?if($_SESSION['id']){
+				
+					include "conn.php";
+					$query = "select * from member where id='$_SESSION[id]'";
+					$result = mysqli_query($connect,$query);
+					$data1 = mysqli_Fetch_Array($result);
+				?>
+					<fieldset>
+                    <p>
+						<?echo "$data1[name]"."님 환영합니다";?>
+						
+					</p>
+					<a href="logout.php"> 로그아웃</a>
+                </fieldset>			
+				<?}else{?>
+                <fieldset>
+                    <p>
+
+					<form action="login_post.php" method="post">
+                        <input type="text" name="id">	<font size=2 color="puple"> 아이디</font>
+                    </p>
+                    <p>
+                        <input type="password" name="pw">	<font size=2 color="puple"> 비밀번호</font>
+                    </p>
+                    <p>
+                        <input type="submit" name="login" value="로그인">
+						</form>
+                        <input type="button" onclick="go();" name="password" value="회원가입">
+                        </p>
+                </fieldset>
+				<?}?>
+            </td>
+			<script>
+				function go(){
+					location.href='memberadd.html'
+				}
+			</script>
+        </tr>
+        <tr>
+            <td width="280" align="center"><a href="menu3.html"><img width="100" height="100"src="develop.PNG" width="100%" height="180" /></a>   </td>
+            <td width="280" align="center"><a href="menu4.html"><img width="100" height="100" src="where.PNG" width="100%" height="180" /></a>   </td>
+        </tr>
+
+    </table>
+        </center>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<?
+	session_start();
+	$b_name = @$_GET['b_name'];
+	if(!$b_name){ $b_name = "c"; }
+
+
+	include "conn.php";
+	
+	$query = "select * from board where b_name='$b_name' order by no desc";
+	$result = mysqli_query($connect,$query);
+?>
+
+<table width="100%" border="1" style="font-size:9pt">
+	<tr>
+<?
+	$i = 0;
+	while($data = mysqli_fetch_Array($result)){
+		$i++;
+		if($i == 6){
+			echo "<tr>";
+			$i=1;
+		}
+?>
+		<td align="center" width="150" height="200"> <img src="img/<?=$b_name?>/<?=$data['img']?>"><?if($_SESSION['id']=='admin'){?><a href="delbook.php?no=<?=$data['no']?>&b_name=<?=$data['b_name']?>"><img src="img/xbutton.PNG"></a><?}?><br>
+		책제목 : <?=$data['book_name']?><br>
+		전화번호 : <?=$data['phone']?><br>
+		작성자 : <?=$data['writer']?>
+<? } ?>
+	<tr>
+		<td colspan="5"> <input type="button" value="글쓰기" onclick="location.href='write.html?b_name=<?=$b_name?>'">
+</table>
+<html lang="kor">
+<head>
+    
+	 <meta charset="utf-8">
+	 </head>
+</html>

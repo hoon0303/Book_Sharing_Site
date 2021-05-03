@@ -1,0 +1,28 @@
+﻿<?
+	$b_name = $_GET['b_name'];
+	if(!$b_name){ echo"<script>alert('오류입니다');</script>"; }
+?>
+<style>
+	td input{
+		font-size:20pt;
+	}
+</style>
+<form action="write_post.php" method="post" enctype="multipart/form-data">
+<input type="hidden" name="b_name" value="<?=$b_name?>">
+<table width="100%" border="1">
+	<tr>
+		<td> 책제목
+		<td> <input type="text" name="book_name">
+	<tr>
+		<td> 핸드폰번호
+		<td> <input type="text" name="phone">
+	<tr>
+		<td> 이름
+		<td> <input type="text" name="writer">
+	<tr>
+		<Td> 이미지주소
+		<td> <input type="file" name="img">
+	<tr>
+		<td colspan="2"> <input type="submit" value="글등록">&nbsp;<input type="button" style="background:red;color:white" value="등록취소" onclick="location.href='cprogram.html?b_name=<?=$b_name?>';">
+</table>
+</form>
